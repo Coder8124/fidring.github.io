@@ -1,0 +1,417 @@
+<!-- This is the order page for customizing a ring. It includes options for size, color, and style, and integrates PayPal for payment processing. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customize Your Ring | Fidring</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <a href="homepage.html">
+                <img src="https://i.ibb.co/3mbPp11b/Screenshot-2025-04-03-8-27-26-AM.png" alt="Logo">
+            </a>
+        </div>
+        <div class="nav-links">
+            <a href="aboutus.html">About</a>
+            <a href="shopage.html">Shop</a>
+            <a href="images.html">Image Gallery</a>
+        </div>
+    </nav>
+
+    <div class="customize-container">
+        <h1>Customize Your Ring</h1>
+        <div class="product-preview">
+            <img id="productImage" src="" alt="Selected Ring">
+            <h2 id="productName"></h2>
+            <p id="productPrice"></p>
+        </div>
+
+        <div class="customization-options">
+            <div class="option-group">
+                <h3>Size</h3>
+                <div class="button-group">
+                    <button class="option-button" data-size="6">Size 6</button>
+                    <button class="option-button" data-size="7">Size 7</button>
+                    <button class="option-button" data-size="8">Size 8</button>
+                    <button class="option-button" data-size="9">Size 9</button>
+                </div>
+            </div>
+
+            <div class="option-group">
+                <h3>Color</h3>
+                <div class="button-group">
+                    <button class="option-button" data-color="silver">Silver</button>
+                    <button class="option-button" data-color="black">Matte Black</button>
+                </div>
+            </div>
+
+            <div class="option-group">
+                <h3>Ring Type</h3>
+                <div class="button-group">
+                    <button class="option-button ring-type" data-type="spinny">
+                        <img src="https://m.media-amazon.com/images/I/61EMT+pBJbL._AC_UY1000_.jpg" alt="Spinny Ring">
+                        <span>Spinny Ring</span>
+                        <p class="type-description">Smooth spinning action for endless fidgeting</p>
+                    </button>
+                    <button class="option-button ring-type" data-type="magnetic">
+                        <img src="https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcT_dF7ZYbLUWtn269LgjOZiMOlSuybUB1tApvXOlH6rIESGho8zNgBfxPpdXYYvbEsZgxJYqhmO-5ZuAwjUqkYks500WyCFg54JdfVKA6fQ014jotBALYq1" alt="Magnetic Ring">
+                        <span>Magnetic Ring</span>
+                        <p class="type-description">Interactive magnetic bands for tactile feedback</p>
+                    </button>
+                    <button class="option-button ring-type" data-type="gemstone">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_3FHjr8VWCK4YUFK8SsgldZokBEgYJ6zJMA&s" alt="Gemstone Ring">
+                        <span>Gemstone Ring</span>
+                        <p class="type-description">Luxury spinning ring with gemstone accents</p>
+                    </button>
+                </div>
+            </div>
+
+            <div class="total-price">
+                <h3>Total: <span id="totalPrice">$0.00</span></h3>
+            </div>
+
+            <div id="paypal-button-container"></div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="contact-section">
+            <h2>Contact Us</h2>
+            <p>Have questions? We'd love to hear from you!</p>
+            <a href="mailto:367815@fidring.com" class="email-button">Send us an email</a>
+            <p>You can also call us at 669-230-1921</p>
+            <p>&copy; 2025 Fidring. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <style>
+        body {
+            font-family: 'Playfair Display', serif;
+            margin: 0;
+            padding: 0;
+            background-color: #666;
+            color: #E6D5C3;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #222;
+        }
+
+        .logo img {
+            height: 50px;
+        }
+
+        .nav-links a {
+            margin-left: 20px;
+            text-decoration: none;
+            color: #E6D5C3;
+            font-weight: bold;
+        }
+
+        .customize-container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #444;
+            border-radius: 10px;
+            margin-bottom: 40px;
+        }
+
+        .customize-container h1 {
+            text-align: center;
+            color: #E6D5C3;
+            margin-bottom: 30px;
+        }
+
+        .product-preview {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .product-preview img {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-bottom: 20px;
+        }
+
+        .option-group {
+            margin-bottom: 30px;
+        }
+
+        .option-group h3 {
+            color: #E6D5C3;
+            margin-bottom: 15px;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .option-button {
+            padding: 10px 20px;
+            background-color: #555;
+            color: #E6D5C3;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .option-button:hover {
+            background-color: #666;
+            transform: translateY(-2px);
+        }
+
+        .option-button.selected {
+            background-color: #777;
+            transform: translateY(-2px);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .ring-type {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 200px;
+            height: auto;
+            padding: 15px;
+            margin: 10px;
+        }
+
+        .ring-type img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-bottom: 10px;
+        }
+
+        .ring-type span {
+            font-weight: bold;
+            margin: 5px 0;
+        }
+
+        .type-description {
+            font-size: 0.8rem;
+            color: #ccc;
+            margin-top: 5px;
+            text-align: center;
+        }
+
+        .total-price {
+            text-align: center;
+            margin: 30px 0;
+            font-size: 1.2rem;
+        }
+
+        #paypal-button-container {
+            max-width: 300px;
+            margin: 20px auto;
+            transition: opacity 0.3s ease;
+        }
+
+        footer {
+            background-color: #333;
+            color: #E6D5C3;
+            text-align: center;
+            width: 100%;
+            position: relative;
+            bottom: 0;
+            margin-top: 40px;
+        }
+
+        .contact-section {
+            text-align: center;
+            padding: 4rem 2rem;
+            background-color: #333;
+            width: 100%;
+            margin: 0;
+        }
+
+        .contact-section h2 {
+            font-size: 2rem;
+            color: #E6D5C3;
+            margin-bottom: 2rem;
+        }
+
+        .contact-section p {
+            color: #E6D5C3;
+            margin: 0.5rem auto;
+            max-width: 600px;
+        }
+
+        .email-button {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: #555;
+            color: #E6D5C3;
+            text-decoration: none;
+            border-radius: 5px;
+            margin: 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .email-button:hover {
+            background-color: #666;
+            transform: translateY(-2px);
+        }
+    </style>
+
+    <!-- PayPal Script -->
+    <script src="https://www.paypal.com/sdk/js?client-id=test&currency=USD"></script>
+    
+    <script>
+        // Get product details from URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const product = urlParams.get('product');
+        
+        // Product configurations
+        const products = {
+            magnetic: {
+                name: "Magnetic Fidget Ring",
+                basePrice: 5.99,
+                image: "https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcT_dF7ZYbLUWtn269LgjOZiMOlSuybUB1tApvXOlH6rIESGho8zNgBfxPpdXYYvbEsZgxJYqhmO-5ZuAwjUqkYks500WyCFg54JdfVKA6fQ014jotBALYq1"
+            },
+            anxiety: {
+                name: "Anxiety Relief Ring",
+                basePrice: 6.99,
+                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQH7tXXyMjS_CKcZN_MwHY7oJr_U0zndQv4wA&s"
+            },
+            gemstone: {
+                name: "Gemstone Fidget Ring",
+                basePrice: 12.99,
+                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_3FHjr8VWCK4YUFK8SsgldZokBEgYJ6zJMA&s"
+            }
+        };
+
+        // Initialize product display
+        const selectedProduct = products[product];
+        document.getElementById('productImage').src = selectedProduct.image;
+        document.getElementById('productName').textContent = selectedProduct.name;
+        document.getElementById('productPrice').textContent = `$${selectedProduct.basePrice}`;
+        
+        // Track selected options and total price
+        const selectedOptions = {
+            size: null,
+            color: null,
+            type: null
+        };
+
+        let currentTotal = selectedProduct.basePrice;
+
+        // Option prices
+        const optionPrices = {
+            color: {
+                silver: 3.00,
+                black: 5.00
+            },
+            type: {
+                spinny: 2.00,
+                magnetic: 4.00,
+                gemstone: 6.00
+            }
+        };
+
+        // Handle option selection
+        document.querySelectorAll('.option-button').forEach(button => {
+            button.addEventListener('click', function() {
+                const type = Object.keys(this.dataset)[0]; // size, color, or type
+                const value = this.dataset[type];
+                
+                // Remove selection from other buttons in the same group
+                this.parentElement.querySelectorAll('.option-button').forEach(btn => {
+                    btn.classList.remove('selected');
+                });
+                
+                // Add selection to clicked button
+                this.classList.add('selected');
+                
+                // Update selected options
+                selectedOptions[type] = value;
+                
+                // Update total price
+                updateTotalPrice();
+
+                // Enable/disable PayPal button based on selections
+                checkAllSelectionsValid();
+            });
+        });
+
+        function updateTotalPrice() {
+            let total = selectedProduct.basePrice;
+            
+            // Add color price if selected
+            if (selectedOptions.color && optionPrices.color[selectedOptions.color]) {
+                total += optionPrices.color[selectedOptions.color];
+            }
+            
+            // Add type price if selected
+            if (selectedOptions.type && optionPrices.type[selectedOptions.type]) {
+                total += optionPrices.type[selectedOptions.type];
+            }
+
+            currentTotal = total;
+            document.getElementById('totalPrice').textContent = `$${total.toFixed(2)}`;
+        }
+
+        function checkAllSelectionsValid() {
+            const allSelected = selectedOptions.size && selectedOptions.color && selectedOptions.type;
+            const paypalButtons = document.querySelector('#paypal-button-container');
+            
+            if (allSelected) {
+                paypalButtons.style.opacity = '1';
+                paypalButtons.style.pointerEvents = 'auto';
+            } else {
+                paypalButtons.style.opacity = '0.5';
+                paypalButtons.style.pointerEvents = 'none';
+            }
+        }
+
+        // Initialize PayPal button with disabled state
+        document.querySelector('#paypal-button-container').style.opacity = '0.5';
+        document.querySelector('#paypal-button-container').style.pointerEvents = 'none';
+
+        // PayPal integration
+        paypal.Buttons({
+            createOrder: function(data, actions) {
+                if (!selectedOptions.size || !selectedOptions.color || !selectedOptions.type) {
+                    alert('Please select all options before checking out');
+                    return;
+                }
+
+                return actions.order.create({
+                    purchase_units: [{
+                        description: `${selectedProduct.name} - ${selectedOptions.color} - Size ${selectedOptions.size}`,
+                        amount: {
+                            value: currentTotal.toFixed(2)
+                        }
+                    }]
+                });
+            },
+            onApprove: function(data, actions) {
+                return actions.order.capture().then(function(details) {
+                    alert('Transaction completed! Thank you for your purchase.');
+                    // Save order details or redirect to confirmation page
+                    window.location.href = `confirmation.html?orderId=${details.id}`;
+                });
+            },
+            onError: function(err) {
+                alert('There was an error processing your payment. Please try again.');
+                console.error(err);
+            }
+        }).render('#paypal-button-container');
+    </script>
+</body>
+</html>
